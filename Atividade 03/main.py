@@ -85,4 +85,12 @@ def atualizar_livro(id: int, livro: Livro):
     raise HTTPException(HTTPStatus.NOT_FOUND, detail=f'O livro com ID {id} não existe')
 
 # Excluir livro.
-    
+@app.delete('/livros/{id}', status_code=HTTPStatus.NO_CONTENT)
+def excluir_livro(id: int):
+    livros = ler_dados_xml()
+    for i, l in enumerate(livros):
+        if l.id == id:
+            del livros[i]
+            escrever_dados_xml(livros)
+            return
+    raise HTTPException(HTTPStatus.NOT_FOUND, detail=f'O livro com ID {id} não existe')
