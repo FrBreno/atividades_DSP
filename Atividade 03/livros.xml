@@ -1,0 +1,23 @@
+<livros>
+    <livro>
+        <id>1</id>
+        <titulo>Dom Quixote</titulo>
+        <autor>Miguel de Cervantes</autor>
+        <ano>1605</ano>
+        <genero>Romance cl&#225;ssico</genero>
+    </livro>
+    <livro>
+        <id>2</id>
+        <titulo>Orgulho e Preconceito</titulo>
+        <autor>Jane Austen</autor>
+        <ano>1813</ano>
+        <genero>Romance</genero>
+    </livro>
+    <livro>
+        <id>3</id>
+        <titulo>1984</titulo>
+        <autor>George Orwell</autor>
+        <ano>1949</ano>
+        <genero>Fic&#231;&#227;o dist&#243;pica</genero>
+    </livro>
+</livros>
