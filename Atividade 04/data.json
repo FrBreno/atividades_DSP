@@ -1,0 +1,17 @@
+[
+    {"id": 1, "name": "John", "age": 30},
+    {"id": 2, "name": "", "age": 25},
+    {"id": 3, "name": "Bob", "age": null},
+    {"id": 4, "name": "Diana", "age": "twenty-eight"},
+    {"id": 5, "name": "Ethan", "age": 35},
+    {"id": 6, "name": "Fiona", "age": -5},
+    {"id": 7, "name": "George", "age": 25},
+    {"id": 8, "name": 12345, "age": 31},
+    {"id": 9, "name": "Isaac", "age": 27},
+    {"id": 10, "name": "Julia", "age": 24},
+    {"id": 11, "name": "Kevin", "age": 29},
+    {"id": 12, "name": "Laura"},
+    {"id": 13, "age": 40},
+    {"id": 13, "name": "Nina", "age": 26},
+    {"id": 15, "name": "Oscar", "age": 33}
+]
