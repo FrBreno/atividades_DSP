@@ -32,6 +32,35 @@ user_router = SQLAlchemyCRUDRouter(
 )
 app.include_router(user_router)
 
+@app.post("/posts", response_model=Post, tags=["Posts"])
+def create_post(post_in: PostCreate, session: Session = Depends(get_session)):
+    # 1. Cria o Post "base"
+    new_post = Post(
+        title=post_in.title,
+        content=post_in.content,
+        user_id=post_in.user_id
+    )
+    session.add(new_post)
+    session.commit()
+    session.refresh(new_post)
+
+    # 2. Para cada category_id enviado, cria registro em post_category
+    for cat_id in post_in.category_ids or []:
+        # Opcional: verificar se a categoria existe
+        try:
+            session.exec(select(Category).where(Category.id == cat_id)).one()
+        except:
+            raise HTTPException(status_code=404, detail=f"Categoria {cat_id} não encontrada.")
+        link = PostCategory(post_id=new_post.id, category_id=cat_id)
+        session.add(link)
+
+    session.commit()
+    session.refresh(new_post)
+    return new_post
+
+
+
+
 ## Categorys
 category_router = SQLAlchemyCRUDRouter(
     db_model=Category,
