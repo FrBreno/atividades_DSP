@@ -842,3 +842,226 @@ WHERE post_category.category_id = ?
  LIMIT ? OFFSET ?
 2025-05-31 22:52:07,241 - sqlalchemy.engine.Engine - INFO - [generated in 0.00086s] (1, 10, 0)
 2025-05-31 22:52:07,244 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:05:33,805 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:05:33,805 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2025-05-31 23:05:33,805 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,806 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post_category")
+2025-05-31 23:05:33,806 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,806 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("category")
+2025-05-31 23:05:33,807 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,808 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post")
+2025-05-31 23:05:33,808 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,809 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("comment")
+2025-05-31 23:05:33,811 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,813 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("like")
+2025-05-31 23:05:33,814 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:05:33,815 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:05:50,585 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:05:50,588 - sqlalchemy.engine.Engine - INFO - SELECT post.title AS post_title, post.content AS post_content, post.id AS post_id, post.user_id AS post_user_id, post.created_at AS post_created_at, post.updated_at AS post_updated_at 
+FROM post ORDER BY post.id
+ LIMIT ? OFFSET ?
+2025-05-31 23:05:50,588 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] (-1, 0)
+2025-05-31 23:05:50,595 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:05:59,747 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:05:59,783 - sqlalchemy.engine.Engine - INFO - DELETE FROM post
+2025-05-31 23:05:59,792 - sqlalchemy.engine.Engine - INFO - [generated in 0.00900s] ()
+2025-05-31 23:05:59,801 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:05:59,913 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:05:59,914 - sqlalchemy.engine.Engine - INFO - SELECT post.title AS post_title, post.content AS post_content, post.id AS post_id, post.user_id AS post_user_id, post.created_at AS post_created_at, post.updated_at AS post_updated_at 
+FROM post ORDER BY post.id
+ LIMIT ? OFFSET ?
+2025-05-31 23:05:59,915 - sqlalchemy.engine.Engine - INFO - [cached since 9.327s ago] (-1, 0)
+2025-05-31 23:05:59,923 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:06:50,774 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:06:50,776 - sqlalchemy.engine.Engine - INFO - SELECT category.name AS category_name, category.description AS category_description, category.id AS category_id 
+FROM category ORDER BY category.id
+ LIMIT ? OFFSET ?
+2025-05-31 23:06:50,777 - sqlalchemy.engine.Engine - INFO - [generated in 0.00070s] (-1, 0)
+2025-05-31 23:06:50,781 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:07:10,806 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:07:10,809 - sqlalchemy.engine.Engine - INFO - INSERT INTO post (title, content, user_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?)
+2025-05-31 23:07:10,809 - sqlalchemy.engine.Engine - INFO - [generated in 0.00094s] ('Nota de repúdio', 'Max Verstappen é muito bom', 1, '2025-06-01 02:07:10.804688', None)
+2025-05-31 23:07:10,813 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:07:10,913 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:07:10,917 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post 
+WHERE post.id = ?
+2025-05-31 23:07:10,918 - sqlalchemy.engine.Engine - INFO - [generated in 0.00368s] (1,)
+2025-05-31 23:07:10,922 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:08:25,499 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:25,499 - sqlalchemy.engine.Engine - INFO - INSERT INTO post (title, content, user_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?)
+2025-05-31 23:08:25,500 - sqlalchemy.engine.Engine - INFO - [cached since 74.69s ago] ('Olá, mundo!', "print('Olá, mundo!')", 4, '2025-06-01 02:08:25.498337', None)
+2025-05-31 23:08:25,503 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:08:25,674 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:25,674 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post 
+WHERE post.id = ?
+2025-05-31 23:08:25,675 - sqlalchemy.engine.Engine - INFO - [cached since 74.76s ago] (2,)
+2025-05-31 23:08:25,683 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:08:36,023 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:36,028 - sqlalchemy.engine.Engine - INFO - SELECT count(post.id) AS count_1 
+FROM post 
+WHERE lower(post.title) LIKE lower(?) OR lower(post.content) LIKE lower(?)
+2025-05-31 23:08:36,029 - sqlalchemy.engine.Engine - INFO - [generated in 0.00076s] ('%olá%', '%olá%')
+2025-05-31 23:08:36,038 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post 
+WHERE lower(post.title) LIKE lower(?) OR lower(post.content) LIKE lower(?)
+ LIMIT ? OFFSET ?
+2025-05-31 23:08:36,040 - sqlalchemy.engine.Engine - INFO - [generated in 0.00228s] ('%olá%', '%olá%', 10, 0)
+2025-05-31 23:08:36,043 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:08:41,902 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:41,904 - sqlalchemy.engine.Engine - INFO - SELECT count(post.id) AS count_1 
+FROM post
+2025-05-31 23:08:41,904 - sqlalchemy.engine.Engine - INFO - [generated in 0.00059s] ()
+2025-05-31 23:08:41,906 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post
+ LIMIT ? OFFSET ?
+2025-05-31 23:08:41,906 - sqlalchemy.engine.Engine - INFO - [generated in 0.00054s] (10, 0)
+2025-05-31 23:08:41,908 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:08:44,373 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:44,375 - sqlalchemy.engine.Engine - INFO - SELECT count(post.id) AS count_1 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+2025-05-31 23:08:44,376 - sqlalchemy.engine.Engine - INFO - [generated in 0.00102s] (1,)
+2025-05-31 23:08:44,380 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+ LIMIT ? OFFSET ?
+2025-05-31 23:08:44,382 - sqlalchemy.engine.Engine - INFO - [generated in 0.00234s] (1, 10, 0)
+2025-05-31 23:08:44,413 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:08:49,213 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:08:49,214 - sqlalchemy.engine.Engine - INFO - SELECT count(post.id) AS count_1 
+FROM post
+2025-05-31 23:08:49,214 - sqlalchemy.engine.Engine - INFO - [cached since 7.311s ago] ()
+2025-05-31 23:08:49,215 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post
+ LIMIT ? OFFSET ?
+2025-05-31 23:08:49,216 - sqlalchemy.engine.Engine - INFO - [cached since 7.31s ago] (10, 0)
+2025-05-31 23:08:49,223 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:09:15,519 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:09:15,522 - sqlalchemy.engine.Engine - INFO - SELECT count(post.id) AS count_1 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+2025-05-31 23:09:15,523 - sqlalchemy.engine.Engine - INFO - [cached since 31.15s ago] (3,)
+2025-05-31 23:09:15,524 - sqlalchemy.engine.Engine - INFO - SELECT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+ LIMIT ? OFFSET ?
+2025-05-31 23:09:15,524 - sqlalchemy.engine.Engine - INFO - [cached since 31.14s ago] (3, 10, 0)
+2025-05-31 23:09:15,533 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:11:39,251 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:11:39,252 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2025-05-31 23:11:39,253 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,255 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post_category")
+2025-05-31 23:11:39,256 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,262 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("category")
+2025-05-31 23:11:39,263 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,264 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post")
+2025-05-31 23:11:39,264 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,265 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("comment")
+2025-05-31 23:11:39,266 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,267 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("like")
+2025-05-31 23:11:39,267 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:11:39,268 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:12:20,668 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:12:20,668 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2025-05-31 23:12:20,668 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,669 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post_category")
+2025-05-31 23:12:20,670 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,670 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("category")
+2025-05-31 23:12:20,670 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,671 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post")
+2025-05-31 23:12:20,671 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,672 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("comment")
+2025-05-31 23:12:20,672 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,672 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("like")
+2025-05-31 23:12:20,673 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:12:20,674 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:12:38,385 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:12:38,411 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post
+2025-05-31 23:12:38,412 - sqlalchemy.engine.Engine - INFO - [generated in 0.00059s] ()
+2025-05-31 23:12:38,417 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post
+ LIMIT ? OFFSET ?
+2025-05-31 23:12:38,418 - sqlalchemy.engine.Engine - INFO - [generated in 0.00057s] (10, 0)
+2025-05-31 23:12:38,420 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:12:43,078 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:12:43,083 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+2025-05-31 23:12:43,088 - sqlalchemy.engine.Engine - INFO - [generated in 0.00612s] (1,)
+2025-05-31 23:12:43,100 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+ LIMIT ? OFFSET ?
+2025-05-31 23:12:43,100 - sqlalchemy.engine.Engine - INFO - [generated in 0.00080s] (1, 10, 0)
+2025-05-31 23:12:43,102 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:12:48,356 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:12:48,358 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+2025-05-31 23:12:48,359 - sqlalchemy.engine.Engine - INFO - [cached since 5.278s ago] (2,)
+2025-05-31 23:12:48,362 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+ LIMIT ? OFFSET ?
+2025-05-31 23:12:48,363 - sqlalchemy.engine.Engine - INFO - [cached since 5.263s ago] (2, 10, 0)
+2025-05-31 23:12:48,365 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:12:57,523 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:12:57,524 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+2025-05-31 23:12:57,524 - sqlalchemy.engine.Engine - INFO - [cached since 14.44s ago] (2,)
+2025-05-31 23:12:57,539 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post JOIN post_category ON post.id = post_category.post_id 
+WHERE post_category.category_id = ?
+ LIMIT ? OFFSET ?
+2025-05-31 23:12:57,541 - sqlalchemy.engine.Engine - INFO - [cached since 14.44s ago] (2, 10, 0)
+2025-05-31 23:12:57,545 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:13:15,963 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:13:15,965 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post
+2025-05-31 23:13:15,966 - sqlalchemy.engine.Engine - INFO - [cached since 37.55s ago] ()
+2025-05-31 23:13:15,967 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post
+ LIMIT ? OFFSET ?
+2025-05-31 23:13:15,968 - sqlalchemy.engine.Engine - INFO - [cached since 37.55s ago] (10, 0)
+2025-05-31 23:13:15,970 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:14:52,829 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:14:52,830 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("user")
+2025-05-31 23:14:52,831 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,836 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post_category")
+2025-05-31 23:14:52,836 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,837 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("category")
+2025-05-31 23:14:52,838 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,839 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("post")
+2025-05-31 23:14:52,839 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,840 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("comment")
+2025-05-31 23:14:52,840 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,841 - sqlalchemy.engine.Engine - INFO - PRAGMA main.table_info("like")
+2025-05-31 23:14:52,841 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-05-31 23:14:52,842 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-05-31 23:14:55,074 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:14:55,107 - sqlalchemy.engine.Engine - INFO - SELECT count(distinct(post.id)) AS count_1 
+FROM post
+2025-05-31 23:14:55,108 - sqlalchemy.engine.Engine - INFO - [generated in 0.00134s] ()
+2025-05-31 23:14:55,111 - sqlalchemy.engine.Engine - INFO - SELECT DISTINCT post.title, post.content, post.id, post.user_id, post.created_at, post.updated_at 
+FROM post
+ LIMIT ? OFFSET ?
+2025-05-31 23:14:55,111 - sqlalchemy.engine.Engine - INFO - [generated in 0.00055s] (10, 0)
+2025-05-31 23:14:55,121 - sqlalchemy.engine.Engine - INFO - SELECT category.name AS category_name, category.description AS category_description, category.id AS category_id 
+FROM category, post_category 
+WHERE ? = post_category.post_id AND category.id = post_category.category_id
+2025-05-31 23:14:55,122 - sqlalchemy.engine.Engine - INFO - [generated in 0.00061s] (1,)
+2025-05-31 23:14:55,123 - sqlalchemy.engine.Engine - INFO - SELECT category.name AS category_name, category.description AS category_description, category.id AS category_id 
+FROM category, post_category 
+WHERE ? = post_category.post_id AND category.id = post_category.category_id
+2025-05-31 23:14:55,124 - sqlalchemy.engine.Engine - INFO - [cached since 0.002359s ago] (2,)
+2025-05-31 23:14:55,125 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-05-31 23:15:10,110 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-05-31 23:15:10,112 - sqlalchemy.engine.Engine - INFO - SELECT post.title AS post_title, post.content AS post_content, post.id AS post_id, post.user_id AS post_user_id, post.created_at AS post_created_at, post.updated_at AS post_updated_at 
+FROM post ORDER BY post.id
+ LIMIT ? OFFSET ?
+2025-05-31 23:15:10,118 - sqlalchemy.engine.Engine - INFO - [generated in 0.00675s] (-1, 0)
+2025-05-31 23:15:10,124 - sqlalchemy.engine.Engine - INFO - ROLLBACK

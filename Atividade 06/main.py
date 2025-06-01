@@ -7,9 +7,9 @@ from typing import List, Optional
 from core.database import create_db_and_tables, get_session
 from core.loggingConfig import setup_logging
 
-from models.user import User, UserRead, UserCreate
+from models.user import User, UserCreate
 from models.category import Category, PostCategory
-from models.post import Post
+from models.post import Post, PostCreate, PostUpdate
 from models.comment import Comment
 from models.like import Like
 
@@ -46,6 +46,8 @@ app.include_router(category_router)
 post_router = SQLAlchemyCRUDRouter(
     db_model=Post,
     schema=Post,
+    create_schema=PostCreate,
+    update_schema=PostUpdate,
     prefix="/posts",
     tags=["Posts"],
     db=get_session
@@ -148,47 +150,66 @@ def get_category_stats(
 @app.get("/posts-pagination", tags=["Posts"])
 def get_posts_paginated(
     page: int = Query(1, ge=1, description="Número da página (1 por padrão)"),
-    page_size: int = Query(10, ge=10, le=100, description="Quantidade de resultados por página (Por padrão é 10 e seu limite é 100)"),
-    search: Optional[str] = Query(None, description="Buscar palavra-chave em título ou conteúdo do Post"),
+    page_size: int = Query(10, ge=1, le=100, description="Quantidade de resultados por página (padrão 10, máximo 100)"),
+    search: Optional[str] = Query(None, description="Buscar palavra-chave em title ou content"),
     category_id: Optional[int] = Query(None, description="Filtrar por ID de categoria"),
     session: Session = Depends(get_session)
 ):
-    stmt = select(Post)
+    stmt = select(Post).distinct(Post.id)
 
     if category_id is not None:
-        stmt = stmt.join(PostCategory, Post.id == PostCategory.post_id).where(PostCategory.category_id == category_id)
-    
+        stmt = stmt.join(
+            PostCategory,
+            Post.id == PostCategory.post_id
+        ).where(
+            PostCategory.category_id == category_id
+        )
+
     if search:
         ilike_pattern = f"%{search}%"
         stmt = stmt.where(
-            (Post.title.ilike(ilike_pattern)) | 
-            (Post.content.ilike(ilike_pattern)) 
+            (Post.title.ilike(ilike_pattern)) |
+            (Post.content.ilike(ilike_pattern))
         )
-    
-    count_stmt = select(func.count(Post.id))
+
+    count_stmt = select(func.count(func.distinct(Post.id)))
 
     if category_id is not None:
-        count_stmt = count_stmt.join(PostCategory, Post.id == PostCategory.post_id).where(PostCategory.category_id == category_id)
-    
+        count_stmt = count_stmt.join(
+            PostCategory,
+            Post.id == PostCategory.post_id
+        ).where(
+            PostCategory.category_id == category_id
+        )
+
     if search:
         ilike_pattern = f"%{search}%"
         count_stmt = count_stmt.where(
-            (Post.title.ilike(ilike_pattern)) | 
-            (Post.content.ilike(ilike_pattern)) 
+            (Post.title.ilike(ilike_pattern)) |
+            (Post.content.ilike(ilike_pattern))
         )
 
     total_records = session.exec(count_stmt).one()
-    total_pages = (total_records + page_size - 1)
-    offset = (page -1 ) * page_size
-
-    stmt = stmt.offset(offset).limit(page_size)
-    results: List[Post] = session.exec(stmt).all()
+    total_pages = (total_records + page_size - 1) // page_size
 
     if page > total_pages and total_records > 0:
         raise HTTPException(status_code=404, detail="Página não encontrada")
 
+    offset = (page - 1) * page_size
+    stmt = stmt.offset(offset).limit(page_size)
+
+    posts: List[Post] = session.exec(stmt).all()
+
+    data = []
+    for post in posts:
+        category_ids = [cat.id for cat in post.categories] if post.categories else []
+        post_dict = post.dict()
+        post_dict.pop("categories", None)
+        post_dict["category_ids"] = category_ids
+        data.append(post_dict)
+
     return {
-        "data": results,
+        "data": data,
         "pagination": {
             "total_records": total_records,
             "total_pages": total_pages,
